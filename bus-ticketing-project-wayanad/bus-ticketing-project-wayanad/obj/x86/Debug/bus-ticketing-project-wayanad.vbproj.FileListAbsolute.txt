@@ -1,0 +1,12 @@
+F:\vb\bus-ticketing-project-wayanad\bus-ticketing-project-wayanad\bin\Debug\bus-ticketing-project-wayanad.exe
+F:\vb\bus-ticketing-project-wayanad\bus-ticketing-project-wayanad\bin\Debug\bus-ticketing-project-wayanad.pdb
+F:\vb\bus-ticketing-project-wayanad\bus-ticketing-project-wayanad\bin\Debug\bus-ticketing-project-wayanad.xml
+F:\vb\bus-ticketing-project-wayanad\bus-ticketing-project-wayanad\obj\x86\Debug\WindowsApplication1.Form1.resources
+F:\vb\bus-ticketing-project-wayanad\bus-ticketing-project-wayanad\obj\x86\Debug\WindowsApplication1.Resources.resources
+F:\vb\bus-ticketing-project-wayanad\bus-ticketing-project-wayanad\obj\x86\Debug\bus-ticketing-project-wayanad.vbproj.GenerateResource.Cache
+F:\vb\bus-ticketing-project-wayanad\bus-ticketing-project-wayanad\obj\x86\Debug\bus-ticketing-project-wayanad.exe
+F:\vb\bus-ticketing-project-wayanad\bus-ticketing-project-wayanad\obj\x86\Debug\bus-ticketing-project-wayanad.xml
+F:\vb\bus-ticketing-project-wayanad\bus-ticketing-project-wayanad\obj\x86\Debug\bus-ticketing-project-wayanad.pdb
+F:\vb\bus-ticketing-project-wayanad\bus-ticketing-project-wayanad\bin\Debug\Database1old_format.mdb
+F:\vb\bus-ticketing-project-wayanad\bus-ticketing-project-wayanad\obj\x86\Debug\WindowsApplication1.Form2.resources
+F:\vb\bus-ticketing-project-wayanad\bus-ticketing-project-wayanad\obj\x86\Debug\WindowsApplication1.Form3.resources
