@@ -1,0 +1,9 @@
+F:\vb\SERIAL TEST\SERIAL TEST\bin\Debug\SERIAL TEST.exe
+F:\vb\SERIAL TEST\SERIAL TEST\bin\Debug\SERIAL TEST.pdb
+F:\vb\SERIAL TEST\SERIAL TEST\bin\Debug\SERIAL TEST.xml
+F:\vb\SERIAL TEST\SERIAL TEST\obj\x86\Debug\WindowsApplication1.Form1.resources
+F:\vb\SERIAL TEST\SERIAL TEST\obj\x86\Debug\WindowsApplication1.Resources.resources
+F:\vb\SERIAL TEST\SERIAL TEST\obj\x86\Debug\SERIAL TEST.vbproj.GenerateResource.Cache
+F:\vb\SERIAL TEST\SERIAL TEST\obj\x86\Debug\SERIAL TEST.exe
+F:\vb\SERIAL TEST\SERIAL TEST\obj\x86\Debug\SERIAL TEST.xml
+F:\vb\SERIAL TEST\SERIAL TEST\obj\x86\Debug\SERIAL TEST.pdb

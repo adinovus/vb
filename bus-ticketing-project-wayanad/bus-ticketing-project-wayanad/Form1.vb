@@ -20,6 +20,7 @@ Public Class Form1
     Dim status As String
     Dim balance_db As String
     Dim locationid_db As String
+    'Dim i As Integer = 0
 
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
@@ -39,7 +40,7 @@ Public Class Form1
         SerialPort1.PortName = port_num
         SerialPort1.BaudRate = baud_rate
         SerialPort1.DataBits = 8
-        SerialPort1.Parity = 0
+        SerialPort1.Parity = IO.Ports.Parity.None
         SerialPort1.StopBits = IO.Ports.StopBits.One
         SerialPort1.WriteTimeout = 2000
 
@@ -138,14 +139,25 @@ Public Class Form1
 
         'give an alert when data received
 
+        Dim data_buffer As String
 
+        data_received = SerialPort1.ReadExisting
+        Invoke(Sub() TextBox5.Text = TextBox5.Text + data_received)
+        Dim data_buffer2 As String
 
+        Dim i As Integer = 0
+        Invoke(Sub() data_buffer = TextBox5.Text)
+        i = Len(data_buffer)
+        Invoke(Sub() Label10.Text = i)
+        data_buffer2 = data_buffer.Substring(i - 6, 6)
 
-        data_received = SerialPort1.ReadLine
+        Invoke(Sub() Label11.Text = data_buffer2)
 
-        first_bit = data_received(0)
-        rfid = data_received.Substring(1, 3)
-        locationid = data_received.Substring(4, 2)
+        Dim rfid_db
+        first_bit = data_buffer(0)
+        rfid = data_buffer2.Substring(1, 3)
+        'Invoke(Sub() TextBox5.Text = rfid)
+        locationid = data_buffer2.Substring(4, 2)
         If first_bit = "$" Then
             Invoke(Sub() Label7.Text = "passenger entered")
             myConnection.Open()
@@ -154,10 +166,17 @@ Public Class Form1
             Dim cmd As OleDbCommand = New OleDbCommand(str, myConnection)
             dr = cmd.ExecuteReader
             While dr.Read()
+                rfid_db = dr("rfid").ToString
                 status = dr("status").ToString
                 balance_db = dr("balance").ToString
                 locationid_db = dr("in_location").ToString
+            End While
+            If rfid_db Is Nothing Then
+                Invoke(Sub() Label9.Text = "card not recognized")
+                SerialPort1.WriteLine("card not recognized")
+            Else
 
+                'checking passenger is already in bus or not
 
                 If status = "y" Then
                     Invoke(Sub() Label8.Text = "passenger leaving the bus")
@@ -169,16 +188,16 @@ Public Class Form1
                         Invoke(Sub() Label9.Text = "not enough balance")
                     Else
                         Invoke(Sub() Label9.Text = "passenger allowed to travel")
-                        Invoke(Sub() card_id.Text = dr("balance").ToString)
-                        Invoke(Sub() locationtext.Text = dr("in_location").ToString)
+                        Invoke(Sub() card_id.Text = balance_db)
+                        Invoke(Sub() locationtext.Text = locationid_db)
                         Invoke(Sub() TextBox4.Text = "y")
                     End If
 
 
                 End If
 
+            End If
 
-            End While
         End If
         myConnection.Close()
 
@@ -318,5 +337,19 @@ Public Class Form1
 
     Private Sub Button7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button7.Click
         Form3.Show()
+    End Sub
+
+
+    Private Sub RichTextBox1_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RichTextBox1.TextChanged
+        'Dim data_buffer2 As String
+
+        'Dim i As Integer = 0
+        'data_buffer2 = RichTextBox1.Text
+        'i = Len(data_buffer2)
+        'Label10.Text = i
+        'Label11.Text = data_buffer2.Substring(i - 5, 5)
+        ''RichTextBox1.Text = ""
+        ''i = i + 4
+
     End Sub
 End Class

@@ -49,8 +49,12 @@ Partial Class Form1
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.Button6 = New System.Windows.Forms.Button()
         Me.Button7 = New System.Windows.Forms.Button()
+        Me.Button6 = New System.Windows.Forms.Button()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.TextBox5 = New System.Windows.Forms.TextBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -134,6 +138,7 @@ Partial Class Form1
         '
         'SerialPort1
         '
+        Me.SerialPort1.WriteBufferSize = 4048
         '
         'card_id
         '
@@ -250,7 +255,7 @@ Partial Class Form1
         '
         'TextBox4
         '
-        Me.TextBox4.Location = New System.Drawing.Point(-1, 316)
+        Me.TextBox4.Location = New System.Drawing.Point(-2, 372)
         Me.TextBox4.Name = "TextBox4"
         Me.TextBox4.Size = New System.Drawing.Size(10, 20)
         Me.TextBox4.TabIndex = 15
@@ -285,15 +290,6 @@ Partial Class Form1
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Passenger data"
         '
-        'Button6
-        '
-        Me.Button6.Location = New System.Drawing.Point(252, 29)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(75, 23)
-        Me.Button6.TabIndex = 18
-        Me.Button6.Text = "Add card"
-        Me.Button6.UseVisualStyleBackColor = True
-        '
         'Button7
         '
         Me.Button7.Location = New System.Drawing.Point(15, 29)
@@ -303,11 +299,57 @@ Partial Class Form1
         Me.Button7.Text = "Balance info"
         Me.Button7.UseVisualStyleBackColor = True
         '
+        'Button6
+        '
+        Me.Button6.Location = New System.Drawing.Point(252, 29)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(75, 23)
+        Me.Button6.TabIndex = 18
+        Me.Button6.Text = "Add card"
+        Me.Button6.UseVisualStyleBackColor = True
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(58, 252)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(45, 13)
+        Me.Label10.TabIndex = 19
+        Me.Label10.Text = "Label10"
+        '
+        'TextBox5
+        '
+        Me.TextBox5.Location = New System.Drawing.Point(-2, 372)
+        Me.TextBox5.Name = "TextBox5"
+        Me.TextBox5.Size = New System.Drawing.Size(10, 20)
+        Me.TextBox5.TabIndex = 20
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(339, 262)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(45, 13)
+        Me.Label11.TabIndex = 21
+        Me.Label11.Text = "Label11"
+        '
+        'RichTextBox1
+        '
+        Me.RichTextBox1.Location = New System.Drawing.Point(301, 44)
+        Me.RichTextBox1.Name = "RichTextBox1"
+        Me.RichTextBox1.Size = New System.Drawing.Size(135, 107)
+        Me.RichTextBox1.TabIndex = 22
+        Me.RichTextBox1.Text = ""
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(767, 398)
+        Me.Controls.Add(Me.RichTextBox1)
+        Me.Controls.Add(Me.Label11)
+        Me.Controls.Add(Me.TextBox5)
+        Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.TextBox4)
@@ -359,5 +401,9 @@ Partial Class Form1
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
     Friend WithEvents Button6 As System.Windows.Forms.Button
     Friend WithEvents Button7 As System.Windows.Forms.Button
+    Friend WithEvents Label10 As System.Windows.Forms.Label
+    Friend WithEvents TextBox5 As System.Windows.Forms.TextBox
+    Friend WithEvents Label11 As System.Windows.Forms.Label
+    Friend WithEvents RichTextBox1 As System.Windows.Forms.RichTextBox
 
 End Class
