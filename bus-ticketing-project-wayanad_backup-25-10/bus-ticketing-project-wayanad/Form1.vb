@@ -14,11 +14,13 @@ Public Class Form1
     Dim port_num As String
     Dim data_received As String
     Dim first_bit As Char
+    Dim gprmc As String = "$GPRMC"
     Dim rfid As String
     Dim locationid As String
     Dim status As String
     Dim balance_db As String
     Dim locationid_db As String
+    'Dim i As Integer = 0
 
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
@@ -57,7 +59,6 @@ Public Class Form1
         If SerialPort1.IsOpen Then
             SerialPort1.RtsEnable = True
             Label4.Text = "connection established"
-            Button1.Enabled = False
 
         End If
 
@@ -99,13 +100,45 @@ Public Class Form1
 
     End Sub
 
+    Private Sub Label5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+
+    End Sub
 
     Private Sub ComboBox1_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBox1.SelectedIndexChanged
         port_num = ComboBox1.Text
     End Sub
     Private Sub SerialPort1_DataReceived(ByVal sender As System.Object, ByVal e As System.IO.Ports.SerialDataReceivedEventArgs) Handles SerialPort1.DataReceived
 
-       
+        'define a string
+
+
+        'get data from serial port
+        'data_received = SerialPort1.ReadLine
+        'first_bit = data_received(0)
+
+        'rfid = data_received.Substring(1, 3)
+        'locationid = data_received.Substring(5, 2)
+
+
+        'If first_bit = "$" Then
+        '    Invoke(Sub() Label7.Text = "passenger entered")
+        '    myConnection.Open()
+
+        '    Invoke(Sub() card_id.Text = "")
+
+        '    Dim str As String
+        '    str = "SELECT * FROM passenger-info WHERE (rfid = '" & rfid & "')"
+        '    Dim cmd As OleDbCommand = New OleDbCommand(str, myConnection)
+        '    dr = cmd.ExecuteReader
+        '    While dr.Read()
+        '        Invoke(Sub() card_id.Text = dr("").ToString)
+        '        Invoke(Sub() locationtext.Text = dr("last_name").ToString)
+        '    End While
+        '    myConnection.Close()
+        'End If
+
+        'give an alert when data received
+
         Dim data_buffer As String
 
         data_received = SerialPort1.ReadExisting
@@ -115,18 +148,18 @@ Public Class Form1
         Dim i As Integer = 0
         Invoke(Sub() data_buffer = TextBox5.Text)
         i = Len(data_buffer)
-        'Invoke(Sub() Label10.Text = i)
+        Invoke(Sub() Label10.Text = i)
         data_buffer2 = data_buffer.Substring(i - 6, 6)
 
-        'Invoke(Sub() Label11.Text = data_buffer2)
+        Invoke(Sub() Label11.Text = data_buffer2)
 
         Dim rfid_db
-        first_bit = data_buffer2(0)
+        first_bit = data_buffer(0)
         rfid = data_buffer2.Substring(1, 3)
         'Invoke(Sub() TextBox5.Text = rfid)
         locationid = data_buffer2.Substring(4, 2)
         If first_bit = "$" Then
-            Invoke(Sub() RichTextBox1.Text = RichTextBox1.Text + "****card swiped****" + vbCrLf)
+            Invoke(Sub() Label7.Text = "passenger entered")
             myConnection.Open()
             Dim str As String
             str = "SELECT * FROM passenger_info WHERE (rfid = '" & rfid & "')"
@@ -139,23 +172,22 @@ Public Class Form1
                 locationid_db = dr("in_location").ToString
             End While
             If rfid_db Is Nothing Then
-                Invoke(Sub() RichTextBox1.Text = RichTextBox1.Text + "card not recognized" + vbCrLf)
+                Invoke(Sub() Label9.Text = "card not recognized")
                 SerialPort1.WriteLine("card not recognized")
             Else
 
-                'Invoke(Sub() RichTextBox1.Text = RichTextBox1.Text + rfid_db + vbCrLf)
                 'checking passenger is already in bus or not
 
                 If status = "y" Then
-                    Invoke(Sub() RichTextBox1.Text = RichTextBox1.Text + "passenger with card number " + rfid_db + " leaving the bus" + vbCrLf)
+                    Invoke(Sub() Label8.Text = "passenger leaving the bus")
 
                     Invoke(Sub() TextBox4.Text = "n")
                 Else
-                    Invoke(Sub() RichTextBox1.Text = RichTextBox1.Text + "passenger with card number " + rfid_db + " entering the bus" + vbCrLf)
+                    Invoke(Sub() Label8.Text = "passenger entering the bus")
                     If balance_db < 10 Then
-                        Invoke(Sub() RichTextBox1.Text = RichTextBox1.Text + "not enough balance" + vbCrLf)
+                        Invoke(Sub() Label9.Text = "not enough balance")
                     Else
-                        Invoke(Sub() RichTextBox1.Text = RichTextBox1.Text + "passenger allowed to travel" + vbCrLf)
+                        Invoke(Sub() Label9.Text = "passenger allowed to travel")
                         Invoke(Sub() card_id.Text = balance_db)
                         Invoke(Sub() locationtext.Text = locationid_db)
                         Invoke(Sub() TextBox4.Text = "y")
@@ -173,11 +205,53 @@ Public Class Form1
 
     End Sub
 
- 
+    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
 
-   
+        Dim data_send As String
+        data_send = TextBox1.Text
+        SerialPort1.WriteLine(data_send)
+    End Sub
 
- 
+    Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
+        myConnection.Open()
+        rfid = TextBox1.Text.Substring(1, 3)
+        locationid = TextBox1.Text.Substring(4, 2)
+
+        Dim str As String
+        str = "SELECT * FROM passenger_info WHERE (rfid = '" & rfid & "')"
+        Dim cmd As OleDbCommand = New OleDbCommand(str, myConnection)
+        dr = cmd.ExecuteReader
+        While dr.Read()
+            status = dr("status").ToString
+            balance_db = dr("balance").ToString
+            locationid_db = dr("in_location").ToString
+
+
+            If status = "y" Then
+                Label8.Text = "passenger leaving the bus"
+
+                TextBox4.Text = "n"
+            Else
+                Label8.Text = "passenger entering the bus"
+                If balance_db < 10 Then
+                    Label9.Text = "not enough balance"
+                Else
+                    Label9.Text = "passenger allowed to travel"
+                    card_id.Text = dr("balance").ToString
+                    locationtext.Text = dr("in_location").ToString
+                    TextBox4.Text = "y"
+                End If
+
+
+            End If
+        End While
+        myConnection.Close()
+       
+    End Sub
+
+    Private Sub card_id_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles card_id.TextChanged
+
+    End Sub
 
     Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
         myConnection.Open()
@@ -230,10 +304,6 @@ Public Class Form1
             card_id.Text = account_balance
             locationtext.Text = travel_distance
 
-            RichTextBox1.Text = RichTextBox1.Text + "distance travelled is " + CStr(travel_distance) + vbCrLf
-            RichTextBox1.Text = RichTextBox1.Text + "travel fare is " + CStr(travel_fare) + vbCrLf
-            RichTextBox1.Text = RichTextBox1.Text + "balance remaining - " + CStr(account_balance) + vbCrLf
-
 
             str2 = "UPDATE passenger_info SET "
 
@@ -261,8 +331,25 @@ Public Class Form1
         Form2.Show()
     End Sub
 
+    Private Sub GroupBox3_Enter(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles GroupBox3.Enter
+
+    End Sub
+
     Private Sub Button7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button7.Click
         Form3.Show()
     End Sub
 
+
+    Private Sub RichTextBox1_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RichTextBox1.TextChanged
+        'Dim data_buffer2 As String
+
+        'Dim i As Integer = 0
+        'data_buffer2 = RichTextBox1.Text
+        'i = Len(data_buffer2)
+        'Label10.Text = i
+        'Label11.Text = data_buffer2.Substring(i - 5, 5)
+        ''RichTextBox1.Text = ""
+        ''i = i + 4
+
+    End Sub
 End Class

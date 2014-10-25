@@ -43,10 +43,14 @@ Partial Class Form1
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
         Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.Label9 = New System.Windows.Forms.Label()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.Button7 = New System.Windows.Forms.Button()
+        Me.Button6 = New System.Windows.Forms.Button()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.TextBox5 = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
@@ -107,7 +111,7 @@ Partial Class Form1
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(87, 107)
+        Me.Button1.Location = New System.Drawing.Point(108, 97)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 2
@@ -138,14 +142,14 @@ Partial Class Form1
         '
         'card_id
         '
-        Me.card_id.Location = New System.Drawing.Point(123, 62)
+        Me.card_id.Location = New System.Drawing.Point(123, 118)
         Me.card_id.Name = "card_id"
         Me.card_id.Size = New System.Drawing.Size(129, 20)
         Me.card_id.TabIndex = 2
         '
         'locationtext
         '
-        Me.locationtext.Location = New System.Drawing.Point(123, 111)
+        Me.locationtext.Location = New System.Drawing.Point(123, 171)
         Me.locationtext.Name = "locationtext"
         Me.locationtext.Size = New System.Drawing.Size(129, 20)
         Me.locationtext.TabIndex = 3
@@ -153,7 +157,7 @@ Partial Class Form1
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(37, 65)
+        Me.Label5.Location = New System.Drawing.Point(33, 118)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(45, 13)
         Me.Label5.TabIndex = 4
@@ -162,7 +166,7 @@ Partial Class Form1
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(28, 114)
+        Me.Label6.Location = New System.Drawing.Point(28, 178)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(93, 13)
         Me.Label6.TabIndex = 5
@@ -231,6 +235,24 @@ Partial Class Form1
         Me.Button3.Text = "Button3"
         Me.Button3.UseVisualStyleBackColor = True
         '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(108, 22)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(39, 13)
+        Me.Label7.TabIndex = 11
+        Me.Label7.Text = "Label7"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(108, 52)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(39, 13)
+        Me.Label8.TabIndex = 12
+        Me.Label8.Text = "Label8"
+        '
         'TextBox4
         '
         Me.TextBox4.Location = New System.Drawing.Point(-2, 372)
@@ -238,9 +260,18 @@ Partial Class Form1
         Me.TextBox4.Size = New System.Drawing.Size(10, 20)
         Me.TextBox4.TabIndex = 15
         '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(108, 75)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(39, 13)
+        Me.Label9.TabIndex = 16
+        Me.Label9.Text = "Label9"
+        '
         'Button5
         '
-        Me.Button5.Location = New System.Drawing.Point(96, 29)
+        Me.Button5.Location = New System.Drawing.Point(146, 29)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(75, 23)
         Me.Button5.TabIndex = 17
@@ -250,10 +281,11 @@ Partial Class Form1
         'GroupBox3
         '
         Me.GroupBox3.Controls.Add(Me.Button7)
+        Me.GroupBox3.Controls.Add(Me.Button6)
         Me.GroupBox3.Controls.Add(Me.Button5)
-        Me.GroupBox3.Location = New System.Drawing.Point(258, 39)
+        Me.GroupBox3.Location = New System.Drawing.Point(31, 316)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(210, 85)
+        Me.GroupBox3.Size = New System.Drawing.Size(344, 76)
         Me.GroupBox3.TabIndex = 18
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Passenger data"
@@ -267,10 +299,19 @@ Partial Class Form1
         Me.Button7.Text = "Balance info"
         Me.Button7.UseVisualStyleBackColor = True
         '
+        'Button6
+        '
+        Me.Button6.Location = New System.Drawing.Point(252, 29)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(75, 23)
+        Me.Button6.TabIndex = 18
+        Me.Button6.Text = "Add card"
+        Me.Button6.UseVisualStyleBackColor = True
+        '
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(37, 177)
+        Me.Label10.Location = New System.Drawing.Point(58, 252)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(45, 13)
         Me.Label10.TabIndex = 19
@@ -286,7 +327,7 @@ Partial Class Form1
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(120, 177)
+        Me.Label11.Location = New System.Drawing.Point(339, 262)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(45, 13)
         Me.Label11.TabIndex = 21
@@ -294,9 +335,9 @@ Partial Class Form1
         '
         'RichTextBox1
         '
-        Me.RichTextBox1.Location = New System.Drawing.Point(40, 193)
+        Me.RichTextBox1.Location = New System.Drawing.Point(301, 44)
         Me.RichTextBox1.Name = "RichTextBox1"
-        Me.RichTextBox1.Size = New System.Drawing.Size(385, 193)
+        Me.RichTextBox1.Size = New System.Drawing.Size(135, 107)
         Me.RichTextBox1.TabIndex = 22
         Me.RichTextBox1.Text = ""
         '
@@ -310,7 +351,10 @@ Partial Class Form1
         Me.Controls.Add(Me.TextBox5)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.GroupBox3)
+        Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.TextBox4)
+        Me.Controls.Add(Me.Label8)
+        Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label5)
@@ -348,10 +392,14 @@ Partial Class Form1
     Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents Button3 As System.Windows.Forms.Button
+    Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents Button4 As System.Windows.Forms.Button
+    Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents TextBox4 As System.Windows.Forms.TextBox
+    Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents Button5 As System.Windows.Forms.Button
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
+    Friend WithEvents Button6 As System.Windows.Forms.Button
     Friend WithEvents Button7 As System.Windows.Forms.Button
     Friend WithEvents Label10 As System.Windows.Forms.Label
     Friend WithEvents TextBox5 As System.Windows.Forms.TextBox
