@@ -140,7 +140,7 @@ Public Class Form1
             End While
             If rfid_db Is Nothing Then
                 Invoke(Sub() RichTextBox1.Text = RichTextBox1.Text + "card not recognized" + vbCrLf)
-                SerialPort1.WriteLine("card not recognized")
+                SerialPort1.WriteLine("recognition fail                &")
             Else
 
                 'Invoke(Sub() RichTextBox1.Text = RichTextBox1.Text + rfid_db + vbCrLf)
@@ -154,8 +154,10 @@ Public Class Form1
                     Invoke(Sub() RichTextBox1.Text = RichTextBox1.Text + "passenger with card number " + rfid_db + " entering the bus" + vbCrLf)
                     If balance_db < 10 Then
                         Invoke(Sub() RichTextBox1.Text = RichTextBox1.Text + "not enough balance" + vbCrLf)
+                        SerialPort1.WriteLine("  no balance     access denied  &")
                     Else
                         Invoke(Sub() RichTextBox1.Text = RichTextBox1.Text + "passenger allowed to travel" + vbCrLf)
+                        SerialPort1.WriteLine("Please Step In                  &")
                         Invoke(Sub() card_id.Text = balance_db)
                         Invoke(Sub() locationtext.Text = locationid_db)
                         Invoke(Sub() TextBox4.Text = "y")
@@ -218,6 +220,8 @@ Public Class Form1
             'str = str + " status = '" & TextBox2.Text & "'"
             str2 = str2 + " WHERE "
             str2 = str2 + " rfid = '" & rfid & "'"
+            RichTextBox1.Text = RichTextBox1.Text + "passenger entering location is " + locationid + vbCrLf
+
         Else
 
             Dim travel_distance As Integer
@@ -233,6 +237,7 @@ Public Class Form1
             RichTextBox1.Text = RichTextBox1.Text + "distance travelled is " + CStr(travel_distance) + vbCrLf
             RichTextBox1.Text = RichTextBox1.Text + "travel fare is " + CStr(travel_fare) + vbCrLf
             RichTextBox1.Text = RichTextBox1.Text + "balance remaining - " + CStr(account_balance) + vbCrLf
+            SerialPort1.WriteLine("Distance" & CStr(travel_distance) & ",Fare" & CStr(travel_fare) & ",Balance " & CStr(account_balance) & "     &")
 
 
             str2 = "UPDATE passenger_info SET "
